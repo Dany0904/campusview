@@ -1,0 +1,167 @@
+#campus-container {
+    width: 100%;
+    height: 90vh;
+    background: #f5f7fa; /* ayuda al fade */
+}
+
+#campus-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/*  edificio */
+.building {
+    cursor: pointer;
+}
+
+.building image {
+    transition: transform 0.18s ease, filter 0.18s ease;
+
+    filter: drop-shadow(4px 6px 10px rgba(0,0,0,0.28))
+            drop-shadow(0px 2px 3px rgba(0,0,0,0.18));
+
+    opacity: 0.96;
+}
+
+.building:hover image {
+    transform: scale(1.03); /*  más sutil */
+
+    filter: drop-shadow(6px 10px 14px rgba(0,0,0,0.32))
+            drop-shadow(0px 3px 4px rgba(0,0,0,0.22))
+            brightness(1.02);
+}
+
+.label {
+    fill: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    text-anchor: middle;
+    pointer-events: none;
+
+    /*  fondo tipo badge */
+    paint-order: stroke;
+    stroke: rgba(0,0,0,0.6);
+    stroke-width: 4px;
+}
+
+/* completado */
+.state-complete image {
+    filter: drop-shadow(0px 6px 12px rgba(0,200,83,0.6))
+            brightness(1.1);
+}
+
+/* en progreso */
+.state-progress image {
+    filter: drop-shadow(0px 6px 12px rgba(255,193,7,0.6));
+}
+
+/* no iniciado */
+.state-none image {
+    opacity: 0.6;
+}
+
+.course-tooltip {
+    position: absolute;
+    display: none;
+    width: 220px;
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-size: 13px;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+.tooltip-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* barra progreso */
+.tooltip-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bar {
+    flex: 1;
+    height: 6px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: #4CAF50;
+    border-radius: 10px;
+}
+
+/* botón */
+.enter-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 6px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.enter-btn:hover {
+    background: #388E3C;
+}
+
+.building {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* variación por edificio */
+.building:nth-child(odd) {
+    animation-duration: 5s;
+}
+
+.building:nth-child(even) {
+    animation-duration: 6s;
+}
+
+@keyframes float {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-4px); }
+    100% { transform: translateY(0px); }
+}
+
+.building:hover image {
+    transform: scale(1.03) translateY(-2px);
+
+    filter:
+        drop-shadow(0px 10px 14px rgba(0,0,0,0.3))
+        brightness(1.03);
+}
+
+.building {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.building:nth-child(1) { animation-delay: 0.1s; }
+.building:nth-child(2) { animation-delay: 0.2s; }
+.building:nth-child(3) { animation-delay: 0.3s; }
+.building:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.building image {
+    filter:
+        drop-shadow(0px 10px 15px rgba(0,0,0,0.25))
+        drop-shadow(0px 3px 4px rgba(0,0,0,0.15));
+}
